@@ -1,0 +1,6 @@
+digraph "" {
+	AVB	[layer=0];
+	AVA	[layer=0];
+	AVB -> AVA	[key=0,
+		weight=47];
+}

@@ -1,0 +1,10 @@
+neuron_name,in_synapse_count,out_synapse_count,product_of_synapses,sum_of_synapses
+AWC,1,1,1,2
+RIA,13,4,52,17
+SMB,3,1,3,4
+URY,1,7,7,8
+AIM,1,1,1,2
+ASH,4,46,184,50
+AIB,1,15,15,16
+AVH,2,5,10,7
+RIF,1,36,36,37
