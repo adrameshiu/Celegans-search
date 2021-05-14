@@ -3,34 +3,56 @@ Study the connectome structure in C. Elegans by finding paths between a set of n
 
 ## Usage
 
+- set up a virtual environment based on the requirements specified
+
 - to use the default values chosen in the code, just use the following command in the terminal
 
   `python main.py`
 
-- To specify the input parameters through command line, follow these optional arguments
+- *OR* To specify the input parameters through command line, follow these optional arguments
 
-  - `--f`
-    - specifies a list of `FROM NEURON CLASSES` to find path from as source
-    - specify the neuron classes one after the other(do not enclose in quotes and do not  use commas)
-    - default specified in code taken otherwise
-  - `--t`
-    - specifies a list of `TO NEURON CLASSES` to find path to as target
-    - follow similar guidelines as the --f argument
-    - default specified in code taken otherwise
-  - `--cgi`
-    - specifies the class grouping intensity
-    - Options are
-      - `1`-> **Strong**
-        - *should have all possible combinations from source cells to target cells*
-      - `2`-> **Moderate(default)**
-        - *All cells from source connect to at least one cell from target class*
-      - `3`-> **Lenient**
-        - *Any one cell in from class, connect to at least 1 cell from target class*
-      - `0`-> **Show all graphs**
-  - `--c`
-    - specifies the max distance cutoff depth to search till(default- 2)
-  - `--h`
-    - **to get a view of all optional parameters available**
+  <details>
+      <summary><u><b><i>Click to Expand</i></b></u></summary>
+      <ul>
+    		<li><b>--f</b>
+      		<ul>
+        			<li>specifies a list of `FROM NEURON CLASSES` to find path to as target</li>
+        			<li>default specified in code taken otherwise</li>
+      		</ul>
+    		</li>
+    		<li> <b>--t</b>
+      		<ul>
+        			<li>specifies a list of `TO NEURON CLASSES` to find path to as target</li>
+        			<li>follow similar guidelines as the --f argument</li>
+        			<li>default specified in code taken otherwise</li>
+      		</ul>
+    		</li>
+    		<li> <b>--cgi</b>
+      		<ul>
+        			<li>specifies the class grouping intensity</li>
+                  <li> Options are
+                      <ul>
+                          <li>> <b>1</b> - <i>Strong</i>: *should have all possible combinations from source cells to target cells*</li>
+                          <li> <b>2</b> - <b>Moderate(default)</b>:*All cells from source connect to at least one cell from target class*</li>
+                          <li> <b>3</b> - <i>Lenient</i>: *Any one cell in from class, connect to at least 1 cell from target class*</li>
+                          <li> <b>0</b> -<i>Show all graphs</i></li>
+                      </ul>
+    				</li>
+              </ul>
+          </li>
+     		<li> <b>--c</b>
+      		<ul>
+        			<li>specifies the max distance cutoff depth to search till(default- 2)</li>
+      		</ul>
+          </li>
+          <li> <b>--h</b>
+      		<ul>
+        			<li>to get a view of all optional parameters available</li>
+      		</ul>
+          </li>
+  	</ul>
+  </details>
+
 
 - Example Usage
 
@@ -85,6 +107,7 @@ Since the adjacency matrices and connectome maps are defined `neuron cell` wise,
 
 ## Folder Structure
 
+
 ````
 Celegans_search
 ├── docs
@@ -112,8 +135,6 @@ Celegans_search
 │   └── logger
 ├── main.py
 ├── LICENSE.txt
-├── README.rst
-├── requirements.txt
 ````
 
 ## User Options
