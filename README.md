@@ -65,17 +65,17 @@ Study the connectome structure in C. Elegans by finding paths between a set of n
 
 > For more details on what happens in the tool, refer the `docs` folder
 
-![Architecture](C:\Users\adity\OneDrive\Documents\IUB\Research\Celegans-search-v2\Celegans-search-V2\docs\screenshots\architecture.JPG)
+![Architecture](docs\screenshots\architecture.JPG)
 
 ### Sample Run 1
 
-![Sample Run 1](C:\Users\adity\OneDrive\Documents\IUB\Research\Celegans-search-v2\Celegans-search-V2\docs\screenshots\sample_run1.JPG)
+![Sample Run 1](docs\screenshots\sample_run1.JPG)
 
 
 
 ### Sample Run 2
 
-![](C:\Users\adity\OneDrive\Documents\IUB\Research\Celegans-search-v2\Celegans-search-V2\docs\screenshots\sample_run2.JPG)
+![Sample Run 2](docs\screenshots\sample_run2.JPG)
 
 ## Motivations
 
