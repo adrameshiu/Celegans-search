@@ -123,3 +123,7 @@ Celegans_search
 ## Data Source
 
 All input data for the C elegans adjacency weights were sourced from https://wormwiring.org/
+
+## Credits
+
+The entire project was done under the guidance of Professor Eduardo J Izquierdo at Indiana University Bloomington. None of this would have been possible if not for his support, ideas, patience and collaborations. Thank You!
