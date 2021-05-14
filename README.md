@@ -147,4 +147,4 @@ All input data for the C elegans adjacency weights were sourced from https://wor
 
 ## Credits
 
-The entire project was done under the guidance of Professor Eduardo J Izquierdo at Indiana University Bloomington. None of this would have been possible if not for his support, ideas, patience and collaborations. Thank You!
+The entire project was done under the guidance of Professor Eduardo J Izquierdo at Indiana University Bloomington. I hope that I could be as lively, enthusiastic, and energetic as him in the projects I get to work on. None of this would have been possible if not for his support, ideas, patience and freedom given. Thank You!
