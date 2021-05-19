@@ -13,6 +13,7 @@ class ArgsCLI:
         self.to_nodes_class = ['AVA']
         self.max_cutoff = 2
         self.class_grouping_intensity = 2
+        self.show_cell_graph = False
 
     def _init_parser(self):
         self.parser = ArgumentParser()
@@ -24,6 +25,9 @@ class ArgsCLI:
                                  nargs='+',
                                  help="specifies a list of TO NEURON CLASSES to find path to as target(default "
                                       "specified in code taken otherwise)")
+        self.parser.add_argument("--show_cell",
+                                 type=bool,
+                                 help="flag to decide whether to show the cell graph or not(default- false)")
         self.parser.add_argument("--cgi",
                                  type=int,
                                  help="specifies the class grouping intensity\n"
@@ -49,5 +53,7 @@ class ArgsCLI:
             self.max_cutoff = input_args.c
         if input_args.cgi or input_args.cgi == 0:  # otherwise 0 is getting considered as none by args
             self.class_grouping_intensity = input_args.cgi
+        if input_args.show_cell:
+            self.show_cell_graph = input_args.show_cell
 
         logger.print_user_parameters(self)

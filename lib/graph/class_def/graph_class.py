@@ -49,13 +49,13 @@ class ConnectomeGraph:
                                            cell_G=self.main_graph,
                                            from_nodes_cells=self.from_list, to_nodes_cells=self.to_list)
 
-    def draw_sub_graph(self, figure_number, plot_title):
+    def draw_sub_graph(self, plot_title):
         if self.is_class_graph:
             networkx_utils.draw_class_graph(plot_title=plot_title,
                                             from_nodes_class=self.from_list, to_nodes_class=self.to_list,
                                             class_G=self.sub_graph, cell_pathways_count=self.cell_pathways_count)
         else:
-            networkx_utils.draw_cell_graph(figure_number=figure_number, plot_title=plot_title,
+            networkx_utils.draw_cell_graph(plot_title=plot_title,
                                            cell_G=self.sub_graph,
                                            from_nodes_cells=self.from_list, to_nodes_cells=self.to_list)
 

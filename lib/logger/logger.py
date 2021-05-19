@@ -7,6 +7,7 @@ def print_user_parameters(args_obj):
     print("To Neuron Classes: ", args_obj.to_nodes_class)
     print("Max Cutoff Depth: ", args_obj.max_cutoff)
     print("Class Grouping Intensity: ", args_obj.class_grouping_intensity)
+    print("Show cell graph: ", args_obj.show_cell_graph)
     print()
 
 

@@ -9,7 +9,9 @@ def build_cell_main_graph(cell_graph_obj, excel_path, from_nodes_class, to_nodes
                                     from_classes_list=from_nodes_class, to_classes_list=to_nodes_class)
 
 
-def filter_cell_graph(cell_graph_obj, max_cutoff, figure_number, is_maximal=True, dot_path=None, csv_path=None):
+def filter_cell_graph(cell_graph_obj, max_cutoff, figure_number,
+                      is_maximal=True, show_cell_graph=False,
+                      dot_path=None, csv_path=None):
     cell_graph_obj.sub_graph = api_alpha.filter_graph(graph_obj=cell_graph_obj,
                                                       max_cutoff=max_cutoff,
                                                       is_incremental=False,
@@ -21,9 +23,10 @@ def filter_cell_graph(cell_graph_obj, max_cutoff, figure_number, is_maximal=True
                                        csv_path=csv_path)
     # figure_number = figure_number + 1
     # cell_graph_obj.draw_main_graph(figure_number=figure_number, plot_title="Main Cell Graph")
-    #
-    # figure_number = figure_number + 1
-    # cell_graph_obj.draw_sub_graph(figure_number=figure_number, plot_title="Sub Cell Graph")
+
+    if show_cell_graph:
+        figure_number = figure_number + 1
+        cell_graph_obj.draw_sub_graph(plot_title="Filtered Cell Graph")
     return figure_number
 
 

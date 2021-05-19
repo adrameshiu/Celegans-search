@@ -17,6 +17,7 @@ def main(args_obj):
     figures_drawn_till_now = graph_api.filter_cell_graph(cell_graph_obj=cell_graph_obj,
                                                          max_cutoff=args_obj.max_cutoff,
                                                          figure_number=figures_drawn_till_now,
+                                                         show_cell_graph=args_obj.show_cell_graph,
                                                          dot_path='out_files/dot_files/cell_graph.dot',
                                                          csv_path='out_files/neuron_info/inter_neuron_cells_filtered'
                                                                   '.csv')
