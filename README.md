@@ -39,29 +39,32 @@ Study the connectome structure in C. Elegans by finding paths between a set of n
                       </ul>
     				</li>
               </ul>
-          </li>
+            </li>
      		<li> <b>--c</b>
       		<ul>
         			<li>specifies the max distance cutoff depth to search till(default- 2)</li>
       		</ul>
-          </li>
-          <li> <b>--h</b>
+          	</li>
+          	<li> <b>--h</b>
       		<ul>
         			<li>to get a view of all optional parameters available</li>
       		</ul>
-          </li>
-                  <li> <b>--show_cell</b>
+          	</li>
+            <li> <b>--show_cell</b>
       		<ul>
         			<li>to also view the network for the cell graph</li>
       		</ul>
-          </li>
-          <li><b>--s</b>
+          	</li>
+          	<li><b>--s</b>
       		<ul>
             	<li>specifies a list of synapses we wish to observe(by default both are shown)</li>
                 <li>{specify `c` for chemical and `e` for electric}</li>
                 <li>{color scheme: `green` for `chemical`, `yellow` for `electric` and `purple` for `mixed`}</li>
       		</ul>
     		</li>
+      </ul>
+  	</details>
+    		
   
   Example Usage
 
