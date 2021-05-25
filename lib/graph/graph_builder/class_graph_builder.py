@@ -125,7 +125,7 @@ def build_moderate_class_graph(cell_graph_obj, figures_drawn_till_now, from_node
                                   all_neuron_details=cell_graph_obj.all_neuron_details,
                                   edges_csv_path='out_files/paths/complete_class_filtered_moderate_paths.csv')
 
-    class_graph_obj_moderate.set_cell_pathways_count(cell_pathways_count=cell_pathways_count_for_class)
+        class_graph_obj_moderate.set_cell_pathways_count(cell_pathways_count=cell_pathways_count_for_class)
 
     if class_graph_obj_moderate:
         figures_drawn_till_now = figures_drawn_till_now + 1
@@ -172,7 +172,7 @@ def build_lenient_class_graph(cell_graph_obj, figures_drawn_till_now, from_nodes
                                   all_neuron_details=cell_graph_obj.all_neuron_details,
                                   edges_csv_path='out_files/paths/complete_class_filtered_lenient_paths.csv')
 
-    class_graph_obj_lenient.set_cell_pathways_count(cell_pathways_count=cell_pathways_count_for_class)
+        class_graph_obj_lenient.set_cell_pathways_count(cell_pathways_count=cell_pathways_count_for_class)
 
     if class_graph_obj_lenient.main_graph:
         figures_drawn_till_now = figures_drawn_till_now + 1

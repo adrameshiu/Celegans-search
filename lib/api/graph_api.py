@@ -2,10 +2,11 @@ from lib.api import api_alpha
 import lib.graph.graph_builder as graph_builder
 
 
-def build_cell_main_graph(cell_graph_obj, excel_path, from_nodes_class, to_nodes_class):
+def build_cell_main_graph(cell_graph_obj, excel_path, from_nodes_class, to_nodes_class, synapse_types):
     print("Building Cell Graph...")
     api_alpha.build_main_cell_graph(cell_graph_obj=cell_graph_obj,
                                     excel_path=excel_path,
+                                    synapse_types=synapse_types,
                                     from_classes_list=from_nodes_class, to_classes_list=to_nodes_class)
 
 

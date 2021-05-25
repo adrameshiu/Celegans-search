@@ -2,5 +2,8 @@ digraph "" {
 	AVB	[layer=0];
 	AVA	[layer=0];
 	AVB -> AVA	[key=0,
+		color="#264027",
+		edge_type=chemical,
+		graph_type=class_graph,
 		weight=47];
 }

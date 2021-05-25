@@ -5,14 +5,15 @@ from lib.manipulation import *
 
 
 # Given an excel sheet path, extract all the sheets present and only return a list that contains the sheets defined in
-def get_relevant_excel_sheets(excel_path):
+def get_relevant_excel_sheets(excel_path, synapse_types):
     print(sheet_name2synapse_map)
     xlsx = pd.ExcelFile(excel_path)
     df_all_sheets = pd.read_excel(xlsx, sheet_name=None, index_col=None, header=None)
     df_list = []
     for key in df_all_sheets.keys():
         if key in sheet_name2synapse_map.keys():
-            df_list.append({'type': sheet_name2synapse_map[key], 'df': df_all_sheets[key]})
+            if sheet_name2synapse_map[key] in synapse_types:
+                df_list.append({'type': sheet_name2synapse_map[key], 'df': df_all_sheets[key]})
     return df_list
 
 

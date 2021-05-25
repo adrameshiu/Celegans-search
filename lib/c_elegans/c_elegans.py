@@ -6,6 +6,8 @@ from collections import Counter
 
 import lib.manipulation as manipulation
 import lib.graph.networkx_utils as networkx_utils
+import lib.graph.synapse as synapse
+from lib.options.user_settings import *
 
 
 def get_relevant_cells_from_classes(G, from_nodes_class, to_nodes_class, all_neurons_list):
@@ -64,7 +66,6 @@ def get_class_edge(cell_G, u_class, v_class, classes_dict):
     # we have a list of dict of all synapse details...we need to sum them up based on type of synapse
     for dct in all_class_edges:
         cell_edge_connections_counter.update(dct)
-
     return dict(cell_edge_connections_counter)
 
 
@@ -75,12 +76,10 @@ def get_node_connection_details(G, src_list, target_list, is_sub_attr=False):
     for node in sub_graph_nodes:
         if (node in src_list) or (node in target_list):  # we do not want the source or target neurons here
             continue
-
         incoming_neuron_heads = find_incoming_neuron_heads(G=G, node=node, is_sub_attr=is_sub_attr)
         outgoing_neuron_heads = find_outgoing_neuron_heads(G=G, node=node, is_sub_attr=is_sub_attr)
 
         neuron_details.append({"name": node, "IN": incoming_neuron_heads, "OUT": outgoing_neuron_heads})
-
     return neuron_details
 
 
@@ -95,7 +94,6 @@ def find_incoming_neuron_heads(G, node, is_sub_attr):
                                                         from_node=prev_node, to_node=node,
                                                         is_sub_attr=is_sub_attr)
         incoming_synapse.append(pred_synapse)
-
     if len(incoming_synapse) > 0:
         incoming_neuron_heads = sum_values_with_same_key_in_list_of_dicts(lst=incoming_synapse)
 
@@ -126,19 +124,29 @@ def sum_values_with_same_key_in_list_of_dicts(lst):
 
 def generate_interneuron_csv_file(csv_path, neuron_details):
     with open(csv_path, 'w', newline='') as csv_file:
-        fieldnames = ['neuron_name', 'in_synapse_count', 'out_synapse_count', 'product_of_synapses', 'sum_of_synapses']
-        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        synapse_types = list(sheet_name2synapse_map.values())
+        synapse_types.append('mixed') ##todo:refactor
+        csv_headers = synapse.get_synapse_headers_for_csv()
+        writer = csv.DictWriter(csv_file, fieldnames=csv_headers)
         writer.writeheader()
         for neuron in neuron_details:
-            neuron_in = neuron['IN']['chemical'] if 'chemical' in neuron['IN'] else 0
-            neuron_out = neuron['OUT']['chemical'] if 'chemical' in neuron['OUT'] else 0
-            connections_product = neuron_in * neuron_out
-            connections_sum = neuron_in + neuron_out
-            writer.writerow({'neuron_name': neuron['name'],
-                             'in_synapse_count': neuron_in,
-                             'out_synapse_count': neuron_out,
-                             'product_of_synapses': connections_product,
-                             'sum_of_synapses': connections_sum})
+            neuron_csv_dict = {'neuron_name': neuron['name']}
+            in_values = []
+            out_values = []
+            all_synapse_count_list = list(map(lambda x: synapse.get_synapse_count(synapse_type=x, neuron=neuron),
+                                              synapse_types))
+            for synapse_count_list in all_synapse_count_list:
+                in_synapse_key = synapse.get_in_synapse_string_with_type(synapse_type=synapse_count_list['type'])
+                out_synapse_key = synapse.get_out_synapse_string_with_type(synapse_type=synapse_count_list['type'])
+                neuron_csv_dict[in_synapse_key] = synapse_count_list['IN']
+                neuron_csv_dict[out_synapse_key] = synapse_count_list['OUT']
+                in_values.append(neuron_csv_dict[in_synapse_key])
+                out_values.append(neuron_csv_dict[out_synapse_key])
+            total_in_values = sum(in_values)
+            total_out_values = sum(out_values)
+            neuron_csv_dict['sum_of_synapses'] = total_in_values + total_out_values
+            neuron_csv_dict['product_of_synapses'] = total_in_values * total_out_values
+            writer.writerow(neuron_csv_dict)
 
 
 def get_cell_pathways_for_class_paths(cell_paths, class_paths, all_neurons):

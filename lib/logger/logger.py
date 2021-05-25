@@ -1,4 +1,6 @@
 import networkx as nx
+from lib.manipulation import *
+import lib.graph.synapse as synapse
 
 
 def print_user_parameters(args_obj):
@@ -8,6 +10,7 @@ def print_user_parameters(args_obj):
     print("Max Cutoff Depth: ", args_obj.max_cutoff)
     print("Class Grouping Intensity: ", args_obj.class_grouping_intensity)
     print("Show cell graph: ", args_obj.show_cell_graph)
+    print("Synapse types: ", args_obj.synapse_types)
     print()
 
 
@@ -20,5 +23,9 @@ def print_graph_details(G):
 
 def print_neuron_details(neuron_details):
     for neuron in neuron_details:
-        print(neuron['name'], "[", neuron['IN']['chemical'], ",", neuron['OUT']['chemical'],
-              "]")  # todo:should be general for both synapses
+        neuron_string = neuron['name'] + ' -> '
+        all_keys = synapse.find_all_synapse_types_at_neuron(neuron)
+        for synapse_type in all_keys:
+            synapse_string = synapse.get_synapse_count_string(synapse_type=synapse_type, neuron=neuron)
+            neuron_string = neuron_string + '   ' + synapse_string
+        print(neuron_string)

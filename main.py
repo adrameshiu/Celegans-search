@@ -12,6 +12,7 @@ def main(args_obj):
     cell_graph_obj = ConnectomeGraph()
     graph_api.build_cell_main_graph(cell_graph_obj=cell_graph_obj,
                                     excel_path=excel_path,
+                                    synapse_types=args_obj.synapse_types,
                                     from_nodes_class=args_obj.from_nodes_class, to_nodes_class=args_obj.to_nodes_class)
 
     figures_drawn_till_now = graph_api.filter_cell_graph(cell_graph_obj=cell_graph_obj,
@@ -22,6 +23,11 @@ def main(args_obj):
                                                          csv_path='out_files/neuron_info/inter_neuron_cells_filtered'
                                                                   '.csv')
 
+    # edges = list(cell_graph_obj.sub_graph.edges(data=True))
+    # from pprint import pprint
+    # pprint(edges)
+
+    # #
     figures_drawn_till_now = class_graph_builder.build_class_graph_from_cell_graph(cell_graph_obj=cell_graph_obj,
                                                                                    figures_drawn_till_now=figures_drawn_till_now,
                                                                                    from_nodes_class=args_obj.from_nodes_class,

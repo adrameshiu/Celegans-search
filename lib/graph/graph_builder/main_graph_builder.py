@@ -32,7 +32,7 @@ def build_main_class_graph(graph_obj, cell_G, class_grouping_intensity=3, dot_pa
             inter_class_details = c_elegans.get_node_connection_details(G=graph_obj.main_graph,
                                                                         src_list=graph_obj.from_list,
                                                                         target_list=graph_obj.to_list,
-                                                                        is_sub_attr=True)
+                                                                        is_sub_attr=False)
             c_elegans.generate_interneuron_csv_file(csv_path=csv_path, neuron_details=inter_class_details)
 
 
@@ -50,8 +50,8 @@ def build_sub_class_graph(graph_obj, dot_path=None, csv_path=None):
         c_elegans.generate_interneuron_csv_file(csv_path=csv_path, neuron_details=inter_class_details)
 
 
-def build_main_cell_graph(cell_graph_obj, excel_path, from_classes_list, to_classes_list):
-    df_list = pre_processing.get_relevant_excel_sheets(excel_path=excel_path)
+def build_main_cell_graph(cell_graph_obj, excel_path, from_classes_list, to_classes_list, synapse_types):
+    df_list = pre_processing.get_relevant_excel_sheets(excel_path=excel_path, synapse_types=synapse_types)
     main_graph, classes_dict, nodes_dict_list = build_excel_graphs(df_list=df_list)
 
     cell_graph_obj.main_graph = main_graph
@@ -112,5 +112,8 @@ def build_sheet_network(weight_matrix, all_neurons_cols, all_neurons_rows, synap
             if not math.isnan(edge_weight):
                 abs_edge_weight = abs(edge_weight)
                 G.add_edge(node1, node2, color=edge_type2color_map[synapse_type], weight=abs_edge_weight, alpha=0.5,
-                           edge_type=synapse_type)
+                           edge_type=synapse_type, graph_type='cell_graph')
     return G
+
+
+

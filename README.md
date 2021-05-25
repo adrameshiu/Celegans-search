@@ -50,13 +50,23 @@ Study the connectome structure in C. Elegans by finding paths between a set of n
         			<li>to get a view of all optional parameters available</li>
       		</ul>
           </li>
-  	</ul>
-  </details>
+                  <li> <b>--show_cell</b>
+      		<ul>
+        			<li>to also view the network for the cell graph</li>
+      		</ul>
+          </li>
+          <li><b>--s</b>
+      		<ul>
+            	<li>specifies a list of synapses we wish to observe(by default both are shown)</li>
+                <li>{specify `c` for chemical and `e` for electric}</li>
+                <li>{color scheme: `green` for `chemical`, `yellow` for `electric` and `purple` for `mixed`}</li>
+      		</ul>
+    		</li>
+  
+  Example Usage
 
 
-- Example Usage
-
-  ```powershell
+- ```powershell
   python main.py --f AWB --t AVA AVB --c 2 --cgi 0
   ```
 
@@ -104,6 +114,10 @@ Study the connectome structure in C. Elegans by finding paths between a set of n
 While talking of studying connectome maps, we intend to identify the synapses and interneurons between source and target neurons, lesion/kill certain interneurons and study if the resultant network has any impact on function(based on the connections between sensory and motor neurons). We intend to study how important a neuron class is for a particular behavior/ability/function. To do this, we need to consider how strong a neuron is, in terms of the number of neuron synaptic connections at the junction. We need to find, common path between multiple source and target neuron classes which can help us discover the critical synapses that connect multiple related classes or clusters of neurons. 
 
 Since the adjacency matrices and connectome maps are defined `neuron cell` wise, but most insights are derived `neuron class` wise, there are various ways we have to analyze how the cells are grouped to classes. It is very hard to understand the overall nature of the connectome by just directly looking at the neuron cells as there are so many connections and it gets very hard to track. So, the cell graph first needs to be built based on the adjacency matrices, then the cells need to be grouped to classes based on the requirements and then we can analyze the paths. 
+
+
+
+The synapses and their corresponding weights are specified in `adjacency matrices`, with each `synapse type` having its own `excel sheet`.  If we try finding these interneurons and paths by hand, it would get very cumbersome, tedious and complicated, since we will have to iteratively search connections from source step by step and `finding paths that exists passing through different synapse types`. So we need to find a way to ensure we can find a way to find such paths more efficiently. 
 
 ## Folder Structure
 

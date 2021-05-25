@@ -6,8 +6,8 @@ def set_node_attribute(G, node_label, attribute_name, value):
     nx.set_node_attributes(G, values={node_label: value}, name=attribute_name)
 
 
-def set_edge_attribute(G, node_label, attribute_name, value):
-    nx.set_edge_attributes(G, values={node_label: value}, name=attribute_name)
+def set_edge_attribute(G, edge_tuple, attribute_name, value):
+    nx.set_edge_attributes(G, values={edge_tuple: value}, name=attribute_name)
 
 
 def color_nodes(G, src_nodes=None, target_nodes=None):
