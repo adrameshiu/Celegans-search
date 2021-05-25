@@ -2,9 +2,10 @@ import lib.graph.path_finder as path_finder
 import lib.graph.graph_builder as graph_builder
 
 
-def build_main_cell_graph(cell_graph_obj, excel_path, from_classes_list, to_classes_list):
+def build_main_cell_graph(cell_graph_obj, excel_path, from_classes_list, to_classes_list, synapse_types):
     return graph_builder.build_main_cell_graph(cell_graph_obj=cell_graph_obj,
                                                excel_path=excel_path,
+                                               synapse_types=synapse_types,
                                                from_classes_list=from_classes_list, to_classes_list=to_classes_list)
 
 

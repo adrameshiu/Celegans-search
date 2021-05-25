@@ -1,5 +1,6 @@
 from argparse import ArgumentParser
 import lib.logger as logger
+from lib.options.user_settings import *
 
 
 class ArgsCLI:
@@ -14,6 +15,7 @@ class ArgsCLI:
         self.max_cutoff = 2
         self.class_grouping_intensity = 2
         self.show_cell_graph = False
+        self.synapse_types = ['chemical', 'electric']
 
     def _init_parser(self):
         self.parser = ArgumentParser()
@@ -39,6 +41,12 @@ class ArgsCLI:
         self.parser.add_argument("--c",
                                  type=int,
                                  help="specifies the max distance cutoff depth to search till(default- 2)")
+        self.parser.add_argument("--s",
+                                 nargs='+',
+                                 help="specifies a list of synapses we wish to observe(by default both are shown)\n"
+                                      "Options are"
+                                      "\n\tc-Chemical"
+                                      "\n\te-Electric")
 
     def parse(self):
         input_args = self.parser.parse_args()
@@ -55,5 +63,7 @@ class ArgsCLI:
             self.class_grouping_intensity = input_args.cgi
         if input_args.show_cell:
             self.show_cell_graph = input_args.show_cell
+        if input_args.s:
+            self.synapse_types = [short_hand2synapse_map.get(s) for s in input_args.s]
 
         logger.print_user_parameters(self)

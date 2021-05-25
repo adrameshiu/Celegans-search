@@ -5,8 +5,12 @@
 ##################################################################
 
 # RELEVANT SHEETS
-sheet_name2synapse_map = {'hermaphrodite chemical': 'chemical'}  # for only chem
-# sheet_name2synapse_map = {'hermaphrodite chemical':'chemical', 'hermaphrodite gap jn asymmetric':'electric'} #for
+# sheet_name2synapse_map = {'hermaphrodite chemical': 'chemical'}  # for only chem
+sheet_name2synapse_map = {'hermaphrodite chemical': 'chemical',
+                          'hermaphrodite gap jn asymmetric': 'electric'}  # for
+
+short_hand2synapse_map = {'c': 'chemical',
+                          'e': 'electric'}
 # both together
 
 # EXCEL PARSING PARAMETERS
@@ -21,5 +25,6 @@ src_color = '#CCD4BF'
 dest_color = '#E5DB9C'
 
 # edge colors
-edge_type2color_map = {'chemical': '#DC828F',
-                       'electric': '#BEB4CF'}  # green color edges for chemical; red for assymetric gap
+edge_type2color_map = {'chemical': '#264027',  # green for chemical
+                       'electric': '#FFC370',  # yellow for electric
+                       'multiple': '#856084'}  # purple for mix

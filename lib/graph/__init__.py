@@ -5,3 +5,4 @@ from .graph_builder import *
 from .networkx_utils import *
 from .path_finder import *
 from .group_classes import *
+from .synapse import *

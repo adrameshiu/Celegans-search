@@ -31,3 +31,5 @@ def parse_neuron_name(neuron_name):
 def remove_none_from_list_of_lists(lst):
     filtered_list = [list(filter(None, sub_list)) for sub_list in lst]
     return filtered_list
+
+
