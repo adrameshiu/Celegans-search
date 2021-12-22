@@ -2,7 +2,7 @@ on: [push]
 
 defaults:
  run:
-  working-directory: ./joss
+  working-directory: joss
   
 jobs:
   paper:
