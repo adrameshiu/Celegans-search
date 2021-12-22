@@ -1,8 +1,4 @@
 on: [push]
-
-defaults:
- run:
-  working-directory: joss
   
 jobs:
   paper:
